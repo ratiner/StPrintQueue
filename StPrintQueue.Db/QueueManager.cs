@@ -7,15 +7,12 @@ using System.Linq;
 
 namespace StPrintQueue.Db
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class QueueManager
     {
         private int _seq = 0;
         private IList<Job> _jobs { get; set; }
         /// <summary>
-        /// 
+        /// Returns list of current jobs in queue
         /// </summary>
         public IList<Job> Jobs
         {
@@ -29,9 +26,6 @@ namespace StPrintQueue.Db
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public QueueManager()
         {
             _jobs = new List<Job>();
@@ -39,10 +33,10 @@ namespace StPrintQueue.Db
 
        
         /// <summary>
-        /// 
+        /// Finds and returns job by identifier
         /// </summary>
-        /// <param name="jobId"></param>
-        /// <returns></returns>
+        /// <param name="jobId">Queue job id</param>
+        /// <returns>Job object</returns>
         public Job GetJobById(int jobId)
         {
             var job = _jobs.FirstOrDefault(x => x.Id == jobId);
@@ -52,9 +46,9 @@ namespace StPrintQueue.Db
         }
 
         /// <summary>
-        /// 
+        /// Appends a new job to the queue
         /// </summary>
-        /// <param name="newJob"></param>
+        /// <param name="newJob">Retuns job object with id and status</param>
         public void Add(Job newJob)
         {
             if (newJob != null)
@@ -66,19 +60,19 @@ namespace StPrintQueue.Db
         }
 
         /// <summary>
-        /// 
+        /// Removes a job from a queue
         /// </summary>
-        /// <param name="job"></param>
+        /// <param name="job">Job object to remove</param>
         public void Remove(Job job)
         {
             _jobs.Remove(job);
         }
 
         /// <summary>
-        /// 
+        /// Change a job position in a queue
         /// </summary>
-        /// <param name="job"></param>
-        /// <param name="position"></param>
+        /// <param name="job">Job object to move</param>
+        /// <param name="position">New position of object</param>
         public void SetOrder(Job job, int position)
         {
             if (position < 0 || position > _jobs.Count - 1)
@@ -87,7 +81,11 @@ namespace StPrintQueue.Db
             _jobs.Remove(job);
             _jobs.Insert(position, job);
         }
-
+        
+        /// <summary>
+        /// Saves the current queue state to a file in json format
+        /// </summary>
+        /// <param name="filePath">Target file path</param>
         public void WriteTo(string filePath)
         {
             var json = new FileStore(_seq, _jobs).AsString();
@@ -98,6 +96,10 @@ namespace StPrintQueue.Db
             }
         }
 
+        /// <summary>
+        /// Restores queue state from json file
+        /// </summary>
+        /// <param name="filePath">Source file path</param>
         public void LoadFrom(string filePath)
         {
             if (System.IO.File.Exists(filePath))

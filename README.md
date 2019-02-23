@@ -6,6 +6,14 @@ Server side: ASP.NET Core 2.1 Rest API Server
 
 Client side: Angular
 
+Missing things:
+1. There is no way to actualy print, duration is not reduced.
+2. Cancellation is demo.
+3. Time calcuation is not based on status, because there is no indication how much time left for printing.
+4. Missing logging
+5. If server goes down unexpectedly, queue is lost. Using a DB instead of json file is preferred.
+6. Authentication is missing, anybody can mess up the queue.
+
 ## Getting Started
 
 Clone the whole solution from git
@@ -48,7 +56,7 @@ npm install
 ```
 npm start
 ```
-Open a browser window at http://localhost:3000
+Open a browser window at http://localhost:4200
    
 ## Deployment
 

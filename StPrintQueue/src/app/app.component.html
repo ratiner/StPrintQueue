@@ -25,9 +25,9 @@
                 <i title="Cancel Job" class="fas fa-ban cancel" (click)="cancelJob()"></i><span style="font-size:smaller"></span>
               </div>
               <div *ngIf="job.status == 0">
-                  <i title="Move UP" class="fas fa-arrow-circle-up up" (click)="move(job, i-1)" [style.visibility] = "i == 1 ? 'hidden' : ''"></i>
-                  <i title="Move DOWN" class="fas fa-arrow-circle-down down" (click)="move(job, i+1)" [style.visibility] = "isLast ? 'hidden' : ''"></i>
-                  <i title="Delete Job" class="fas fa-minus-circle delete" (click)="deleteJob(job)"></i>
+                  <i title="Move UP" class="fas fa-arrow-circle-up up link" (click)="move(job, i-1)" [style.visibility] = "i == 1 ? 'hidden' : ''"></i>
+                  <i title="Move DOWN" class="fas fa-arrow-circle-down down link" (click)="move(job, i+1)" [style.visibility] = "isLast ? 'hidden' : ''"></i>
+                  <i title="Delete Job" class="fas fa-minus-circle delete link" (click)="deleteJob(job)"></i>
               </div>
               
             </div>
@@ -41,10 +41,10 @@
         </div>
         
         <div class="row item">
-            <div class="col-2">New Job:</div>
+            <div class="col-2" style="padding:5px;">New Job:</div>
             <div class="col-5"><input type="text" class="form-control" placeholder="Name" [(ngModel)]="newJob.name"></div>
             <div class="col-4"><input type="number" class="form-control" placeholder="Duration (minutes)" [(ngModel)]="newJob.duration"></div>
-            <div class="col-1"><i class="fas fa-plus-circle" (click)="addJob()"></i></div>
+            <div class="col-1" style="padding:5px;"><i class="fas fa-plus-circle add link" (click)="addJob()"></i></div>
         </div>
       </div>
  

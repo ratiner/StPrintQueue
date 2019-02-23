@@ -3,6 +3,7 @@
     text-align: center;
   }
 
+
   .queueTable .header, .queueTable .item{
     padding: 0.75rem;
     border-bottom:solid 1px rgb(222, 226, 230);
@@ -31,3 +32,11 @@
     color:red;
     font-weight: bold;
   }
+
+  i.add {
+    color:green;
+  }
+  .link {
+      cursor: pointer;
+  }
+
