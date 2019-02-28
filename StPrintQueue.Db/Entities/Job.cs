@@ -8,7 +8,8 @@ namespace StPrintQueue.Db.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Duration { get; set; }
+        public int Duration { get; set; }
+        public DateTime? StartTime { get; set; }
         public JobStatus Status { get; set; }
     }
 }

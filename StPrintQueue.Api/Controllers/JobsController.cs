@@ -36,17 +36,12 @@ namespace StPrintQueue.Api.Controllers
             var printingJob = _queue.Jobs[0];
             if (printingJob.Status == JobStatus.Printing)
             {
-                //TODO: send a cancel command or something to the physical printer using a fancy API
-                //in order to actually cancel a printing job.
-
                 _queue.Remove(printingJob);
 
-                //then something should send the second job in queue to the printer
-                //and change it status. For now we do this forcefuly.
-                if (_queue.Jobs.Count > 0)
-                    _queue.Jobs[0].Status = JobStatus.Printing;
+                //TODO: send a cancel command or something to the physical printer using a fancy API
+                //in order to actually cancel a printing job.
+                Print.PrintService.CancelPrinting(); //demo cancel print
             }
-
         }
 
         // POST api/<controller>/5/SetOrder

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using StPrintQueue.Db;
+using StPrintQueue.Print;
 using System;
 
 namespace StPrintQueue.Api
@@ -34,6 +35,8 @@ namespace StPrintQueue.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime applicationLifetime)
         {
             applicationLifetime.ApplicationStopping.Register(OnShutdown);
+            applicationLifetime.ApplicationStarted.Register(() => PrintService.BackgroundService(ref _queue, applicationLifetime.ApplicationStopping));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

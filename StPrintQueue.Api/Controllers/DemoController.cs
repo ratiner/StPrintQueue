@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace StPrintQueue.Api.Controllers
 {

@@ -26,6 +26,17 @@ namespace StPrintQueue.Db
             }
         }
 
+        /// <summary>
+        /// Returns wether the current queue has jobs
+        /// </summary>
+        public bool HasJobs
+        {
+            get
+            {
+                return Jobs.Count > 0;
+            }
+        }
+
         public QueueManager()
         {
             _jobs = new List<Job>();

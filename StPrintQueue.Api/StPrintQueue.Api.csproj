@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StPrintQueue.Db\StPrintQueue.Db.csproj" />
+    <ProjectReference Include="..\StPrintQueue.Print\StPrintQueue.Print.csproj" />
   </ItemGroup>
 
 </Project>
