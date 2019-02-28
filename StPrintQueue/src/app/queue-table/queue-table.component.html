@@ -1,0 +1,32 @@
+
+    <div class="container queueTable">
+      <div class="row header">
+        <div class="col-2"></div>
+        <div class="col-1">#</div>
+        <div class="col-5">Name</div>
+        <div class="col-2">Starts</div>
+        <div class="col-2">Ends</div>
+      </div>
+      <div class="row item" *ngFor="let job of jobList | durationToTime; let i = index; last as isLast;">
+          <div class="col-2">
+            <div *ngIf="job.status == 1">
+              <i title="Cancel Job" class="fas fa-ban cancel" (click)="cancelJob()"></i><span style="font-size:smaller"></span>
+            </div>
+            <div *ngIf="job.status == 0">
+                <i title="Move UP" class="fas fa-arrow-circle-up up link" (click)="move(job, i-1)" [style.visibility] = "i == 1 ? 'hidden' : ''"></i>
+                <i title="Move DOWN" class="fas fa-arrow-circle-down down link" (click)="move(job, i+1)" [style.visibility] = "isLast ? 'hidden' : ''"></i>
+                <i title="Delete Job" class="fas fa-minus-circle delete link" (click)="deleteJob(job)"></i>
+            </div>
+            
+          </div>
+          <div class="col-1">{{i}}</div>
+          <div class="col-5" style="text-align: left; padding-left:5%">
+                  <i [ngClass]="job.status == 1 ? 'fas fa-print' : 'far fa-clock'"></i> 
+                   {{job.name}}
+          </div>
+          <div class="col-2">@{{job.startTime | date:'d/M/yy, H:mm:ss' }}</div>
+          <div class="col-2">@{{job.endTime | date:'d/M/yy, H:mm:ss' }}</div>
+      </div>
+      
+     <app-new-job (OnAdd)="addJob($event)"></app-new-job>
+    </div>

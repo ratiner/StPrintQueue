@@ -6,12 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JobsService } from './jobs.service';
-import { DurationToTimePipe } from './duration-to-time.pipe';
+import { QueueTableComponent } from './queue-table/queue-table.component';
+import { DurationToTimePipe } from './queue-table/duration-to-time.pipe';
+import { NewJobComponent } from './queue-table/new-job/new-job.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DurationToTimePipe
+    QueueTableComponent,
+    DurationToTimePipe,
+    NewJobComponent
   ],
   imports: [
     BrowserModule,

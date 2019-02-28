@@ -6,13 +6,26 @@ Server side: ASP.NET Core 2.1 Rest API Server
 
 Client side: Angular
 
-Missing things:
-1. There is no way to actualy print, duration is not reduced.
-2. Cancellation is demo.
-3. Time calcuation is not based on status, because there is no indication how much time left for printing.
-4. Missing logging
-5. If server goes down unexpectedly, queue is lost. Using a DB instead of json file is preferred.
-6. Authentication is missing, anybody can mess up the queue.
+## Missing things
+
+1. Missing logging
+2. If server goes down unexpectedly, queue is lost. Using a DB instead of json file is preferred.
+3. Authentication is missing, anybody can mess up the queue.
+
+
+## Assumptions
+
+1. There is no delay between jobs. One job finishes, the second starts immidiately.
+2. Job duration is in seconds and there is job takes less than 1 second. [Minimum job duration is 1s. Job duration is an integer]
+3. Server is rock solid. Unexpected crash, power loss, loss of connectivity cannot happen.
+4. Printer is ideal. Materials are unlimited and so on. In other words, there is nothing that can interrupt printing proccess except "Cancel" function of API.
+5. Duration time is estimated perfrectly. There is no difference between duration entered in the UI and the actual printing time.
+6. No parallel users adding to queue. In case of parallel users, the table will need a different refresh method or a fixed low polling delay.
+7. Current refreshTimer (UI Table refresh) is set to the activeJob duration +1 second.  In other words, after each job estimated to complete +1 second, the table will refresh.
+   The idea behind this: The only thing that can change without the user intervention is "active job removed by the server". And this can be predicted by the endTime of the job.
+   I added one more second just to be sure the table will be refreshed "after" the server.
+   With the assumption [5] it should be OK for most cases.
+
 
 ## Getting Started
 

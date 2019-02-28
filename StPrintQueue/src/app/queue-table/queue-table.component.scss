@@ -1,0 +1,32 @@
+.queueTable .header, .queueTable .item{
+    padding: 0.75rem;
+    border-bottom:solid 1px rgb(222, 226, 230);
+  }
+
+  .queueTable .header{
+    background-color: rgb(233, 236, 239);
+    border-top:solid 1px rgb(222, 226, 230);
+    font-weight:bold;
+  }
+
+  i.up {
+    color:rgb(34, 116, 238);
+  }
+
+  i.down {
+    color:rgb(179, 184, 255);
+  }
+
+  i.delete {
+ color:red;
+ margin-left:10px;
+  }
+
+  i.cancel {
+    color:red;
+    font-weight: bold;
+  }
+ 
+  .link {
+      cursor: pointer;
+  }
