@@ -16,7 +16,7 @@ Client side: Angular
 ## Assumptions
 
 1. There is no delay between jobs. One job finishes, the second starts immidiately.
-2. Job duration is in seconds and there is job takes less than 1 second. [Minimum job duration is 1s. Job duration is an integer]
+2. Job duration is in seconds and there is no duration less than 1 second. [Minimum job duration is 1s. Job duration is an integer]
 3. Server is rock solid. Unexpected crash, power loss, loss of connectivity cannot happen.
 4. Printer is ideal. Materials are unlimited and so on. In other words, there is nothing that can interrupt printing proccess except "Cancel" function of API.
 5. Duration time is estimated perfrectly. There is no difference between duration entered in the UI and the actual printing time.
@@ -24,7 +24,7 @@ Client side: Angular
 7. Current refreshTimer (UI Table refresh) is set to the activeJob duration +1 second.  In other words, after each job estimated to complete +1 second, the table will refresh.
    The idea behind this: The only thing that can change without the user intervention is "active job removed by the server". And this can be predicted by the endTime of the job.
    I added one more second just to be sure the table will be refreshed "after" the server.
-   With the assumption [5] it should be OK for most cases.
+   With the assumptions [1] and [2] it should be OK for most cases.
 
 
 ## Getting Started
